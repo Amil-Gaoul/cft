@@ -1,170 +1,16 @@
-// массив объектов для слайдера на главной странице
-var obj = [
-	{
-		class_parrent: "articles__block",
-		class_image: "articles__block-img",
-		image: "img/shot-1.png",
-		class_title: "articles__block-title",
-		tit: "Стандартный пакет",
-		class_date: "articles__block-data",
-		date: "08 апреля 2012"
-	},
-	{
-		class_parrent: "articles__block",
-		class_image: "articles__block-img",
-		image: "img/shot-2.png",
-		class_title: "articles__block-title",
-		tit: "Новый цфт-банк",
-		class_date: "articles__block-data",
-		date: "09 сентября 2016"
-	},
-	{
-		class_parrent: "articles__block",
-		class_image: "articles__block-img",
-		image: "img/shot-3.png",
-		class_title: "articles__block-title",
-		tit: "Каталог разработок",
-		class_date: "articles__block-data",
-		date: "03 марта 2015"
-	},
-	{
-		class_parrent: "articles__block",
-		class_image: "articles__block-img",
-		image: "img/shot-1.png",
-		class_title: "articles__block-title",
-		tit: "Стандартный пакет",
-		class_date: "articles__block-data",
-		date: "08 апреля 2012"
-	},
-	{
-		class_parrent: "articles__block",
-		class_image: "articles__block-img",
-		image: "img/shot-2.png",
-		class_title: "articles__block-title",
-		tit: "Новый цфт-банк",
-		class_date: "articles__block-data",
-		date: "09 сентября 2016"
-	},
-	{
-		class_parrent: "articles__block",
-		class_image: "articles__block-img",
-		image: "img/shot-3.png",
-		class_title: "articles__block-title",
-		tit: "Каталог разработок",
-		class_date: "articles__block-data",
-		date: "03 марта 2015"
-	},
-	{
-		class_parrent: "articles__block",
-		class_image: "articles__block-img",
-		image: "img/shot-1.png",
-		class_title: "articles__block-title",
-		tit: "Стандартный пакет",
-		class_date: "articles__block-data",
-		date: "08 апреля 2012"
-	},
-	{
-		class_parrent: "articles__block",
-		class_image: "articles__block-img",
-		image: "img/shot-2.png",
-		class_title: "articles__block-title",
-		tit: "Новый цфт-банк",
-		class_date: "articles__block-data",
-		date: "09 сентября 2016"
-	},
-	{
-		class_parrent: "articles__block",
-		class_image: "articles__block-img",
-		image: "img/shot-3.png",
-		class_title: "articles__block-title",
-		tit: "Каталог разработок",
-		class_date: "articles__block-data",
-		date: "03 марта 2015"
-	},
-	{
-		class_parrent: "articles__block",
-		class_image: "articles__block-img",
-		image: "img/shot-1.png",
-		class_title: "articles__block-title",
-		tit: "Стандартный пакет",
-		class_date: "articles__block-data",
-		date: "08 апреля 2012"
-	}
-];
+var guidMap = 	{
+	"ec05b6c5-87a8-4d7b-a42d-fc65f6efba9a": "img/shot-1.png",
+	"6675c951-55f4-41f2-8ca3-75c262ecc964": "img/shot-2.png",
+	"6959327b-a000-4492-9155-724f3dfaee78": "img/shot-3.png",
+	"087aeaaa-e011-4e19-bbe2-7dcd594632a4": "img/shot-1.png",
+	"daa37953-2a4c-47d7-8520-b11c4b5f1fbb": "img/shot-2.png",
+	"9f35b89d-bce8-41dc-b121-e831cadc1e7e": "img/shot-3.png",
+	"e210a37e-80ba-4303-bb47-f79858efbd44": "img/shot-1.png",
+	"f850ad42-325c-4d20-bce5-3542f8eb57dc": "img/shot-2.png",
+	"c16f46a8-fab5-4b8a-943a-5ed087522a39": "img/shot-3.png",
+	"866bb6a7-65f5-44d0-9da3-cd6ff4060556": "img/shot-1.png"
+};
 
-// массив объектов для списка приложений
-var apps = [
-	{
-		class_element: "aside-catalog__list_link",
-		href: "#",
-		link_title: "Стандартный пакет"
-	},
-	{
-		class_element: "aside-catalog__list_link",
-		href: "#",
-		link_title: "Новый ЦФТ-Банк"
-	},
-	{
-		class_element: "aside-catalog__list_link",
-		href: "#",
-		link_title: "Cash Management"
-	},
-	{
-		class_element: "aside-catalog__list_link",
-		href: "#",
-		link_title: "Аренда сейфов"
-	},
-	{
-		class_element: "aside-catalog__list_link",
-		href: "#",
-		link_title: "Банковские гарантии"
-	},
-	{
-		class_element: "aside-catalog__list_link",
-		href: "#",
-		link_title: "Казначейство"
-	},
-	{
-		class_element: "aside-catalog__list_link",
-		href: "#",
-		link_title: "Страхование"
-	},
-	{
-		class_element: "aside-catalog__list_link",
-		href: "#",
-		link_title: "Факторинговое обслуживание"
-	},
-	{
-		class_element: "aside-catalog__list_link",
-		href: "#",
-		link_title: "Переводы средств"
-	},
-	{
-		class_element: "aside-catalog__list_link",
-		href: "#",
-		link_title: "Расчетный центр"
-	},
-	{
-		class_element: "aside-catalog__list_link",
-		href: "#",
-		link_title: "Пластиковые карты"
-	},
-	{
-		class_element: "aside-catalog__list_link",
-		href: "#",
-		link_title: "Финансовый мониторинг"
-	},
-	{
-		class_element: "aside-catalog__list_link",
-		href: "#",
-		link_title: "Депозиты и вклады"
-	},
-	{
-		class_element: "aside-catalog__list_link",
-		href: "#",
-		link_title: "Инвестиции"
-	}
-];
 //alert("start using ajax");
 var elem = document.querySelector('.slider__content');
 //var len = obj.length;
@@ -173,241 +19,194 @@ var xhr = new XMLHttpRequest();
 
 xhr.open("GET", "api/app_package.json", true);
 
-// xhr.onerror = function() {
-// 	console.log(e.target);
-// 	console.log(e.loaded);
-// 	console.log(e.total);
+xhr.onreadystatechange = function(e) {
+	if (xhr.readyState != 4) return;
 
-// 	console.log(xhr.readyState);
-// };
-
-var guid = new XMLHttpRequest();
-
-guid.open("GET", "api/guid_map.json", true);
-
-
-
-xhr.onload = function(e) {
-
-	var response = xhr.responseText;
-
-	var obj = JSON.parse(response);
-
-	var len = obj.length;
-
-	function Slides () {
-		guid.onload = function(e) {
-			var responseGuid = guid.responseText;
-			var guidMap = JSON.parse(responseGuid);
-			console.log(guidMap);
-
-			var pos = 22;
-			var item = document.querySelector('.slider-nav__content');
-
-			for (var i = 0; i < len; i++) {
-				if (i !== 7) {
-					var appData = obj[i];
-					//console.log(appData);
-					var li = document.createElement('li');
-					li.className = 'articles__block';
-
-					var image = document.createElement('img');
-					image.classList.add('articles__block-img');
-					image.classList.add(appData.guid);
-					//console.log(guidMap[i].appData);
-					//console.log(guidMap[appData]);
-					if (Object.keys(guidMap[i]) =) {
-
-						//data = this.guid;
-						//console.log(data);
-						//console.log(guidMap[i].appData);
-						//image.src = guidMap.;
-						//var key = Object.keys(guidMap[i]);
-						//console.log(guidMap[i]["'" + Object.keys(guidMap[i]) + "'"]);
-						//image.src = this.guidMap[i];
-					}
-
-
-					var title = document.createElement('div');
-					title.className = 'articles__block-title';
-					title.innerHTML = obj[i].title;
-
-					var date = document.createElement('div');
-					date.className = 'articles__block-data';
-
-					elem.appendChild(li);
-					li.appendChild(image);
-					li.appendChild(title);
-					li.appendChild(date);
-				}
-			}
-		};
+	if (xhr.status != 200) {
+		// обработать ошибку
+		alert(xhr.status + ': ' + xhr.statusText);
+	} else {
+		try {
+			var obj = JSON.parse(xhr.responseText);
+		} catch (e) {
+			alert("Некорректный ответ " + e.message);
+		}
+		Slides(obj);
 	}
-	Slides ();
 };
 
-// xhr.onreadyStatechange = function (e) {
-// 	console.log(e.target);
-// 	console.log(xhr.readyState);
-// };
-
 xhr.send();
-guid.send();
 
+function Slides (obj) {
+	//console.log(guidMap);
 
-// function Slides () {
+	var pos = 22;
+	var item = document.querySelector('.slider-nav__content');
 
-// 	var i = 0;
-// 	var pos = 22;
-// 	var item = document.querySelector('.slider-nav__content');
+	for (var i = 0; i < 7; i++) {
 
-// 	for (; i < len; i++) {
-// 		if (i !== 7) {
-// 			var li = document.createElement('li');
-// 			li.className = obj[i].class_parrent;
+		var li = document.createElement('li');
+		li.className = 'articles__block';
 
-// 			var image = document.createElement('img');
-// 			image.className = obj[i].class_image;
-// 			image.src = obj[i].image;
+		var image = document.createElement('img');
+		image.className = 'articles__block-img';
+		image.src = guidMap[obj[i].guid];
 
-// 			var title = document.createElement('div');
-// 			title.className = obj[i].class_title;
-// 			title.innerHTML = obj[i].tit;
+		var title = document.createElement('div');
+		title.className = 'articles__block-title';
+		title.innerHTML = obj[i].title;
 
-// 			var date = document.createElement('div');
-// 			date.className = obj[i].class_date;
-// 			date.innerHTML = obj[i].date;
+		var date = document.createElement('div');
+		date.className = 'articles__block-data';
 
-// 			elem.appendChild(li);
-// 			li.appendChild(image);
-// 			li.appendChild(title);
-// 			li.appendChild(date);
+		var Data = new Date (obj[i].lastUpdate * 1000);
+		date.setAttribute("datetime", Data.toLocaleFormat("%d-%m-%Y"));
+		date.innerHTML = Data.toLocaleFormat("%d %B %Y");
 
-// 			// добавление элементов для того чтобы слайдер прокручивался при нажатии на точку,
-// 			// я решил что стоит их тоже сделать динамическими
-// 			var items = document.createElement('li');
-// 			items.className = "item-links";
-// 			items.setAttribute("data-pos", pos + 'rem');
-// 			item.appendChild(items);
+		elem.appendChild(li);
+		li.appendChild(image);
+		li.appendChild(title);
+		li.appendChild(date);
 
-// 			pos -= 22;
-// 		} else {
-// 			break;
-// 		}
-// 	}
-// }
+		// добавление элементов для того чтобы слайдер прокручивался при нажатии на точку, я решил что стоит их тоже сделать динамическими
+		var items = document.createElement('li');
+		items.className = "item-links";
+		items.setAttribute("data-pos", pos + 'rem');
+		item.appendChild(items);
 
-// if (elem) {
-// 	Slides();
-// }
-
-
-var links = document.querySelectorAll('.item-links');
-var slider = document.querySelector('.slider__content');
-
-var activeLink = 0;
-//console.log("links[i] = ", links);
-for (var i = 0; i < links.length; i++) {
-	var link = links[i];
-
-	link.addEventListener('click', setClickedItem, false);
-
-	link.itemID = i;
-}
-
-if (slider) {
-	links[activeLink].classList.add('item-links_active');
-}
-
-function setClickedItem(e) {
-	removeActiveLinks();
-
-	var clickedLink = e.target;
-	activeLink = clickedLink.itemID;
-
-	changePosition(clickedLink);
-}
-
-function removeActiveLinks() {
-	for (var i = 0; i < links.length; i++) {
-		links[i].classList.remove('item-links_active');
+		pos -= 22;
 	}
-}
 
-function changePosition(link) {
-	link.classList.add('item-links_active');
-
-	var position = link.getAttribute('data-pos');
-	elem.style.left = position;
-}
-
-// перелистывание слайдов по клику на стрелку "вправо"
-var navRight = document.querySelector('.articles__next');
-
-if (navRight) {
-	navRight.addEventListener('click', Right, false);
-}
-
-//console.log("links.length = ", links.length);
-function Right() {
+	var links = document.querySelectorAll('.item-links');
+	var slider = document.querySelector('.slider__content');
+	// activeLink обеспечивает метку для активного элемента
+	var activeLink = 0;
+	//console.log("links[i] = ", links);
+	// устанавливаем отслеживание событий
 	for (var i = 0; i < links.length; i++) {
-		if (links[i].classList.contains('item-links_active')) {
 
-			// проверяем является ли слайд последним, если да, то присваиваем переменной item ноль чтобы перейти к самомму первому слайду
-			if (i === links.length - 1) {
-				var item = 0;
-			} else {
-				var item = i + 1;
-			}
+		var link = links[i];
+		link.addEventListener('click', setClickedItem, false);
+
+		// определяем элемент для activeLink
+		link.itemID = i;
+	}
+
+	// устанавливаем первый элемент в качестве активного
+	// делаем проверку как со слайдером выше, чтобы не сыпало ошибками
+	// а то у меня потом список для каталога приложений не хотел грузиться из-за этого
+	if (slider) {
+		links[activeLink].classList.add('item-links_active');
+	}
+
+	function setClickedItem(e) {
+		removeActiveLinks();
+
+		var clickedLink = e.target;
+		activeLink = clickedLink.itemID;
+
+		changePosition(clickedLink);
+	}
+
+	// удаление активной ячейки
+	function removeActiveLinks() {
+		for (var i = 0; i < links.length; i++) {
+			links[i].classList.remove('item-links_active');
 		}
 	}
-	removeActiveLinks();
-	changePosition(links[item]);
-}
+	// Обработчик изменяет позицию слайдера, после того, как мы убедились,
+	// что в качестве активной обозначена нужная нам ссылка.
+	function changePosition(link) {
+		link.classList.add('item-links_active');
 
-// аналогично только теперь влево
-var navLeft = document.querySelector('.articles__prev');
+		var position = link.getAttribute('data-pos');
+		elem.style.left = position;
+	}
 
-if (navLeft) {
-	navLeft.addEventListener('click', Left, false);
-}
+	// перелистывание слайдов по клику на стрелку "вправо"
+	var navRight = document.querySelector('.articles__next');
 
-function Left() {
-	for (var i = 0; i < links.length; i++) {
-		if (links[i].classList.contains('item-links_active')) {
-			if (i === 0) {
-				var item = links.length - 1;
-			} else {
-				var item = i - 1;
+	if (navRight) {
+		navRight.addEventListener('click', Right, false);
+	}
+
+	//console.log("links.length = ", links.length);
+	function Right() {
+		for (var i = 0; i < links.length; i++) {
+			if (links[i].classList.contains('item-links_active')) {
+
+				// проверяем является ли слайд последним, если да, то присваиваем переменной item ноль чтобы перейти к самомму первому слайду
+				// не совсем полноценный слайдер, но сделать лучше как-то не хватило мозгов
+				if (i === links.length - 1) {
+					var item = 0;
+				} else {
+					var item = i + 1;
+				}
 			}
 		}
+		removeActiveLinks();
+		changePosition(links[item]);
 	}
-	removeActiveLinks();
-	changePosition(links[item]);
+
+	// аналогично только теперь влево
+	var navLeft = document.querySelector('.articles__prev');
+
+	if (navLeft) {
+		navLeft.addEventListener('click', Left, false);
+	}
+
+	function Left() {
+		for (var i = 0; i < links.length; i++) {
+			if (links[i].classList.contains('item-links_active')) {
+				if (i === 0) {
+					var item = links.length - 1;
+				} else {
+					var item = i - 1;
+				}
+			}
+		}
+		removeActiveLinks();
+		changePosition(links[item]);
+	}
 }
 
+var apssMap = new XMLHttpRequest();
+
+apssMap.open("GET", "api/app_list.json", true);
+
+apssMap.onreadystatechange = function(e) {
+	if (apssMap.readyState != 4) return;
+
+	if (apssMap.status != 200) {
+		// обработать ошибку
+		alert(apssMap.status + ': ' + apssMap.statusText);
+	} else {
+		try {
+			var appsObj = JSON.parse(apssMap.responseText);
+		} catch (e) {
+			alert("Некорректный ответ " + e.message);
+		}
+		Apps(appsObj);
+	}
+};
+
+apssMap.send();
 
 
 var elemApps = document.querySelector('.aside-catalog__list');
-var ln = apps.length;
 
 // вывод каталога приложений
-function Apps () {
+function Apps (appsObj) {
 
-	var i = 0;
-	for (; i < ln; i++) {
+	for (var i = 0; i < appsObj.length; i++) {
 		var li = document.createElement('li');
 
 		var link = document.createElement('a');
-		link.className = apps[i].class_element;
-		link.href = apps[i].href;
-		link.innerHTML = apps[i].link_title;
+		link.className = 'aside-catalog__list_link';
+		link.href = '#';
+		link.innerHTML = appsObj[i].title;
 
 		elemApps.appendChild(li);
 		li.appendChild(link);
 	}
-}
-
-if (elemApps) {
-	Apps();
 }
