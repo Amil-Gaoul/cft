@@ -165,55 +165,141 @@ var apps = [
 		link_title: "Инвестиции"
 	}
 ];
-
+//alert("start using ajax");
 var elem = document.querySelector('.slider__content');
-var len = obj.length;
+//var len = obj.length;
 
-function Slides () {
+var xhr = new XMLHttpRequest();
 
-	var i = 0;
-	var pos = 22;
-	var item = document.querySelector('.slider-nav__content');
+xhr.open("GET", "api/app_package.json", true);
 
-	for (; i < len; i++) {
-		if (i !== 7) {
-			var li = document.createElement('li');
-			li.className = obj[i].class_parrent;
+// xhr.onerror = function() {
+// 	console.log(e.target);
+// 	console.log(e.loaded);
+// 	console.log(e.total);
 
-			var image = document.createElement('img');
-			image.className = obj[i].class_image;
-			image.src = obj[i].image;
+// 	console.log(xhr.readyState);
+// };
 
-			var title = document.createElement('div');
-			title.className = obj[i].class_title;
-			title.innerHTML = obj[i].tit;
+var guid = new XMLHttpRequest();
 
-			var date = document.createElement('div');
-			date.className = obj[i].class_date;
-			date.innerHTML = obj[i].date;
+guid.open("GET", "api/guid_map.json", true);
 
-			elem.appendChild(li);
-			li.appendChild(image);
-			li.appendChild(title);
-			li.appendChild(date);
 
-			// добавление элементов для того чтобы слайдер прокручивался при нажатии на точку,
-			// я решил что стоит их тоже сделать динамическими
-			var items = document.createElement('li');
-			items.className = "item-links";
-			items.setAttribute("data-pos", pos + 'rem');
-			item.appendChild(items);
 
-			pos -= 22;
-		} else {
-			break;
-		}
+xhr.onload = function(e) {
+
+	var response = xhr.responseText;
+
+	var obj = JSON.parse(response);
+
+	var len = obj.length;
+
+	function Slides () {
+		guid.onload = function(e) {
+			var responseGuid = guid.responseText;
+			var guidMap = JSON.parse(responseGuid);
+			console.log(guidMap);
+
+			var pos = 22;
+			var item = document.querySelector('.slider-nav__content');
+
+			for (var i = 0; i < len; i++) {
+				if (i !== 7) {
+					var appData = obj[i];
+					//console.log(appData);
+					var li = document.createElement('li');
+					li.className = 'articles__block';
+
+					var image = document.createElement('img');
+					image.classList.add('articles__block-img');
+					image.classList.add(appData.guid);
+					//console.log(guidMap[i].appData);
+					//console.log(guidMap[appData]);
+					if (Object.keys(guidMap[i]) =) {
+
+						//data = this.guid;
+						//console.log(data);
+						//console.log(guidMap[i].appData);
+						//image.src = guidMap.;
+						//var key = Object.keys(guidMap[i]);
+						//console.log(guidMap[i]["'" + Object.keys(guidMap[i]) + "'"]);
+						//image.src = this.guidMap[i];
+					}
+
+
+					var title = document.createElement('div');
+					title.className = 'articles__block-title';
+					title.innerHTML = obj[i].title;
+
+					var date = document.createElement('div');
+					date.className = 'articles__block-data';
+
+					elem.appendChild(li);
+					li.appendChild(image);
+					li.appendChild(title);
+					li.appendChild(date);
+				}
+			}
+		};
 	}
-}
+	Slides ();
+};
 
-if (elem) {
-	Slides();
-}
+// xhr.onreadyStatechange = function (e) {
+// 	console.log(e.target);
+// 	console.log(xhr.readyState);
+// };
+
+xhr.send();
+guid.send();
+
+
+// function Slides () {
+
+// 	var i = 0;
+// 	var pos = 22;
+// 	var item = document.querySelector('.slider-nav__content');
+
+// 	for (; i < len; i++) {
+// 		if (i !== 7) {
+// 			var li = document.createElement('li');
+// 			li.className = obj[i].class_parrent;
+
+// 			var image = document.createElement('img');
+// 			image.className = obj[i].class_image;
+// 			image.src = obj[i].image;
+
+// 			var title = document.createElement('div');
+// 			title.className = obj[i].class_title;
+// 			title.innerHTML = obj[i].tit;
+
+// 			var date = document.createElement('div');
+// 			date.className = obj[i].class_date;
+// 			date.innerHTML = obj[i].date;
+
+// 			elem.appendChild(li);
+// 			li.appendChild(image);
+// 			li.appendChild(title);
+// 			li.appendChild(date);
+
+// 			// добавление элементов для того чтобы слайдер прокручивался при нажатии на точку,
+// 			// я решил что стоит их тоже сделать динамическими
+// 			var items = document.createElement('li');
+// 			items.className = "item-links";
+// 			items.setAttribute("data-pos", pos + 'rem');
+// 			item.appendChild(items);
+
+// 			pos -= 22;
+// 		} else {
+// 			break;
+// 		}
+// 	}
+// }
+
+// if (elem) {
+// 	Slides();
+// }
 
 
 var links = document.querySelectorAll('.item-links');
@@ -262,7 +348,7 @@ if (navRight) {
 	navRight.addEventListener('click', Right, false);
 }
 
-console.log("links.length = ", links.length);
+//console.log("links.length = ", links.length);
 function Right() {
 	for (var i = 0; i < links.length; i++) {
 		if (links[i].classList.contains('item-links_active')) {
