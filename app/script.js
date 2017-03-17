@@ -217,7 +217,7 @@ function Apps (appsObj) {
 	}
 }
 
-// огромная куча копипасты
+// огромная куча копипасты для динамической замены контента при клике на ссылку каталога приложений
 var appInfo = new XMLHttpRequest();
 
 appInfo.open("GET", "api/app_info.json", true);
@@ -303,8 +303,6 @@ function appInfoFunc(appInfoObj) {
 		image.src = "";
 	}
 
-	// Обработчик изменяет позицию слайдера, после того, как мы убедились,
-	// что в качестве активной обозначена нужная нам ссылка.
 	function changePosition(app) {
 		app.classList.add('aside-catalog__list_link-active');
 
