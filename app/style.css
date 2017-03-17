@@ -15,7 +15,7 @@ body, html {
 	font-weight: 400;
 	color: #333;
 	height: 100%;
-	background: #f1f1f1;
+	background: #fff;
 }
 
 img {
@@ -24,6 +24,11 @@ img {
 
 .clearfix {
 	clear: both;
+}
+
+.container {
+	background: #f1f1f1;
+	padding-bottom: 3.1rem;
 }
 
 /* MENU */
@@ -52,7 +57,7 @@ img {
 	text-transform: uppercase;
 }
 
-.navbar__menu-main, .navbar__menu-catalog, .navbar__menu-about {
+.navbar__menu-link, .navbar__menu-link, .navbar__menu-link {
 	display: inline-block;
 	text-decoration: none;
 	font-size: 1.1rem;
@@ -62,13 +67,13 @@ img {
 	vertical-align: middle;
 }
 
-.navbar__menu-main:hover, .navbar__menu-catalog:hover, .navbar__menu-about:hover {
+.navbar__menu-link:hover, .navbar__menu-link:hover, .navbar__menu-link:hover {
 	color: #ed1b2f;
 }
 
 .wrapper {
 	width: 73.8rem;
-	margin: 3.1rem auto;
+	margin: 3.1rem auto 0;
 	overflow: hidden;
 }
 
@@ -292,14 +297,16 @@ img {
 	margin: 1.4rem 1.7rem 1.4rem 3rem;
 }
 
-.aside-catalog__list li {
-	padding-bottom: .8rem;
-}
+// .aside-catalog__list li {
+// 	padding-bottom: .8rem;
+// }
 
 .aside-catalog__list_link {
 	text-decoration: none;
 	color: #79878e;
 	padding-left: .4rem;
+	padding-bottom: .8rem;
+	display: block;
 }
 
 .aside-catalog__list_link:hover {
@@ -418,8 +425,12 @@ img {
 	margin-top: 1.8rem;
 }
 
-.app__require span {
+.app__require-title {
 	color: #4f5659;
+}
+
+.app__require-desc {
+	color: #79878e;
 }
 
 .app__image {
@@ -660,7 +671,7 @@ img {
 	-webkit-border-radius: .4rem;
 	-moz-border-radius: .4rem;
 	border-radius: .4rem;
-	margin: 2.5rem 20.8rem;
+	margin: 2.5rem 20.8rem 6.2rem;
 	background: #fff;
 	position: relative;
 	z-index: 10;
@@ -778,12 +789,12 @@ img {
 }
 
 .navigation {
-	margin-top: 6.3rem;
+	margin-top: 3.5rem;
 }
 
 .information {
 	text-align: left;
-	padding: 6.4rem 0 7.3rem 10rem;
+	padding: 6.4rem 0 6.7rem 10rem;
 }
 
 .information__contact {
@@ -879,4 +890,8 @@ img {
 	text-transform: uppercase;
 	text-decoration: none;
 	display: inline-block;
+}
+
+.aside-catalog__list_link-active, .navbar__menu-link_active {
+	color: #ed1b2f;
 }

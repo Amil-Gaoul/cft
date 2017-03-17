@@ -1,0 +1,14 @@
+{
+  "name": "application",
+  "version": "1.0.0",
+  "description": "cft-practice",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "Andrey Veretelnik",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.18.8"
+  }
+}
