@@ -388,13 +388,38 @@ img {
 
 /* APP PAGE */
 
+.content__header {
+	border-bottom: 1px solid #d8d8d8;
+	padding-bottom: 1.1rem;
+	margin: 2.9rem 2.6rem 1.4rem;
+}
+
 .content__title {
 	font-size: 1.4rem;
 	color: #32393d;
-	margin: 2.9rem 2.6rem 1.4rem;
-	border-bottom: 1px solid #d8d8d8;
-	padding-bottom: 1.1rem;
 	text-transform: uppercase;
+	width: 35rem;
+	float: left;
+}
+
+.content__cart {
+	float: right;
+	width: 4rem;
+}
+
+.content__cart:hover {
+	cursor: pointer;
+}
+
+.content__cart-img {
+	width: 2rem;
+	float: left;
+}
+
+.content__cart-number {
+	color: #ed1b2f;
+	font-size: 1.4rem;
+	float: right;
 }
 
 .app {
@@ -439,6 +464,12 @@ img {
 	margin-bottom: 1.2rem;
 }
 
+.app__price {
+	text-align: center;
+	margin-bottom: 1rem;
+	color: #ed1b2f;
+}
+
 .func__title {
 	color: #32393d;
 	font-size: 1.4rem;
@@ -460,10 +491,22 @@ img {
 
 /* BASKET PAGE 1 */
 
+.cart {
+	position: fixed;
+	width: 100%;
+	background: rgba(0,0,0,0.5);
+	overflow: hidden;
+	min-height: 100%;
+	z-index: 5;
+	top: 0;
+	display: none;
+}
+
 .wrapper-basket {
 	width: 1278px;
-	margin: 0 auto;
+	margin: 2rem auto;
 	text-align: center;
+	background: #fff;
 }
 
 .navbar-basket-switch {
@@ -562,6 +605,7 @@ img {
 .table-basket__row-caption {
 	font-size: .7rem;
 	color: #9fa3a7;
+	border-bottom: 1px solid #e8e9ed;
 }
 
 .table-basket__row {
@@ -573,6 +617,10 @@ img {
 	color: #2c2c2c;
 	padding: 3.4rem 0 4.5rem;
 	width: 34.4rem;
+}
+
+.table-basket__row_del:hover {
+	cursor: pointer;
 }
 
 .total {
@@ -595,14 +643,15 @@ img {
 	font-size: 2.3rem;
 	color: #292929;
 	line-height: 1;
+	float: left;
 }
 
 .total__cash-cent {
 	font-size: 1.2rem;
 	color: #9fa3a7;
-	position: absolute;
 	line-height: 1;
-	top: 0;
+	margin: .1rem .2rem;
+	float: left;
 }
 
 .button {
