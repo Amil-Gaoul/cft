@@ -27,8 +27,6 @@
 		apssMap = "api/app_list.json",
 		appInfo = "api/app_info.json";
 
-	//loadData(package);
-
 	loadData(package).then(
 		function(result) {
 			Slides(result);
@@ -64,6 +62,7 @@
 			var catalogPage = document.querySelector('.catalog-page').content;
 			insert.innerHTML = "";
 			insert.appendChild(catalogPage.cloneNode(true));
+
 			loadData(apssMap).then(
 				function(result) {
 					Apps(result);
@@ -74,7 +73,6 @@
 					appInfoFunc(result);
 				}
 			);
-			//loadData(appInfo);
 		}
 	}
 
@@ -253,7 +251,8 @@
 	}
 
 	// вывод каталога приложений
-	function Apps(appsObj) {
+
+	function Apps (appsObj) {
 		var elemApps = document.querySelector('.aside-catalog__list');
 
 		for (var i = 0; i < appsObj.length; i++) {
@@ -504,6 +503,7 @@
 				var firstPage = document.querySelector('.cart-page-first').content;
 				cartWindow.appendChild(firstPage.cloneNode(true));
 				this.show();
+				delAppListener();
 			} else if (page == 2) {
 				cartWindow.innerHTML = "";
 				var secondPage = document.querySelector('.cart-page-second').content;
@@ -618,18 +618,16 @@
 			cartWindow.style.display = 'block';
 			// обращаемся к методу класса show при нажатии на значок корзины в каталоге
 			num.show();
+			delAppListener();
+		}
 
+		function delAppListener() {
 			var delApp = document.querySelectorAll('.table-basket__row_del');
 			//console.log(delApp);
-
 			for (var d = 0; d < delApp.length; d++) {
 
 				var app = delApp[d];
-
 				app.addEventListener('click', deleteApp, false);
-
-				app.appID = d;
-
 			}
 		}
 
