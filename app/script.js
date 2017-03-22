@@ -9,71 +9,55 @@
 		"e210a37e-80ba-4303-bb47-f79858efbd44": "img/shot-1.png",
 		"f850ad42-325c-4d20-bce5-3542f8eb57dc": "img/shot-2.png",
 		"c16f46a8-fab5-4b8a-943a-5ed087522a39": "img/shot-3.png",
-		"866bb6a7-65f5-44d0-9da3-cd6ff4060556": "img/shot-1.png"
+		"866bb6a7-65f5-44d0-9da3-cd6ff4060556": "img/shot-1.png",
+		"9aab566b-5af6-4329-8779-1d604fd12be7": "img/shot-2.png",
+		"4ed5e519-adcd-4b9b-a9ac-2baabe006544": "img/shot-3.png",
+		"a7de488b-1782-49b4-a19f-19806be347e1": "img/shot-1.png",
+		"f4eb162c-4eef-4f61-a961-55faaf91ffb2": "img/shot-2.png",
+		"f60e67ae3-b697-4452-a749-fcbd0ba91e2a": "img/shot-3.png"
 	};
 
-	// var main = document.querySelector('.main-page').content;
-	// var catalog = document.querySelector('.catalog-page').content;
-	// var mainPage = document.querySelector('.main');
-	// var catalogPage = document.querySelector('.catalog');
-	//console.log(catalog);
+	// сразу грузим главную страницу
+	var insertMainPage = document.querySelector('.page');
+	var clonePage = document.querySelector('.main-page').content;
 
-	//document.querySelector('.main').appendChild(main.cloneNode(true));
+	insertMainPage.appendChild(clonePage.cloneNode(true));
 
-	//var header = document.querySelectorAll('.navbar__menu-link');
-	// mainPage.appendChild(main.cloneNode(true));
-	// catalogPage.appendChild(catalog.cloneNode(true));
-	// catalogPage.style.display = 'none';
-	//console.log(header);
-	// функция переключения страниц
+	var package = "api/app_package.json",
+		apssMap = "api/app_list.json",
+		appInfo = "api/app_info.json";
 
-		// var block = document.querySelector('.main');
+	JsonShow(package);
 
-		// activePage = 0;
-		// for (var i = 0; i < header.length; i++) {
-		// 	var page = header[i];
-		// 	page.addEventListener('click', setClickedItem, false);
+	var indexPage = document.querySelectorAll('.navbar__menu-link');
 
-		// 	// определяем элемент для activePage
-		// 	page.itemID = i;
-		// }
+	for (var p = 0; p < indexPage.length; p++) {
+		var mainPage = indexPage[p];
+		mainPage.addEventListener('click', turnMainPage, false);
+	}
 
-		// header[activePage].classList.add('navbar__menu-link_active');
-		// changePosition(header[activePage]);
+	function turnMainPage(e) {
+		var page = e.target;
+		var index = page.getAttribute('data-main');
 
-		// function removeActiveLinks() {
-		// 	for (var i = 0; i < header.length; i++) {
-		// 		header[i].classList.remove('navbar__menu-link_active');
-		// 	}
-		// 	block.removeChild;
-		// }
+		insertPage(index);
+	}
 
-		// function setClickedItem(e) {
-		// 	removeActiveLinks();
-
-		// 	var clickedPage = e.target;
-		// 	activePage = clickedPage.itemID;
-
-		// 	changePosition(clickedPage);
-		// }
-
-		// function changePosition(page) {
-		// 	page.classList.add('navbar__menu-link_active');
-
-		// 	var position = page.getAttribute('data-page');
-		// 	if (position == 1) {
-		// 		document.querySelector('.main').appendChild(main.cloneNode(true));
-		// 		//JsonShow(package);
-		// 	} else if (position == 2) {
-		// 		document.querySelector('.main').appendChild(catalog.cloneNode(true));
-		// 		//console.log(position);
-		// 		JsonShow(apssMap);
-		// 		JsonShow(appInfo);
-		// 	}
-		// }
-
-
-	//var elem = document.querySelector('.slider__content');
+	function insertPage(index) {
+		var insert = document.querySelector('.page');
+		if (index == 1) {
+			var mainPage = document.querySelector('.main-page').content;
+			insert.innerHTML = "";
+			insert.appendChild(mainPage.cloneNode(true));
+			JsonShow(package);
+		} else if (index == 2) {
+			var catalogPage = document.querySelector('.catalog-page').content;
+			insert.innerHTML = "";
+			insert.appendChild(catalogPage.cloneNode(true));
+			JsonShow(apssMap);
+			JsonShow(appInfo);
+		}
+	}
 
 	// функция для загрузки JSON-файлов
 	function JsonShow (file) {
@@ -106,12 +90,6 @@
 
 		xhr.send();
 	}
-	var elem = document.querySelector('.slider__content');
-	var package = "api/app_package.json",
-		apssMap = "api/app_list.json",
-		appInfo = "api/app_info.json";
-
-	JsonShow(package);
 
 	// формат даты
 	var formatter = new Intl.DateTimeFormat("ru", {
@@ -119,8 +97,10 @@
 		month: "long",
 		day: "numeric"
 	});
-
+	// функция переключения слайдов
 	function Switch (links) {
+
+		var elem = document.querySelector('.slider__content');
 
 		var menu = document.querySelector('.navbar__menu');
 		var slider = document.querySelector('.slider__content');
@@ -184,7 +164,8 @@
 			for (var i = 0; i < links.length; i++) {
 				if (links[i].classList.contains('item-links_active')) {
 
-					// проверяем является ли слайд последним, если да, то присваиваем переменной item ноль чтобы перейти к самомму первому слайду
+					// проверяем является ли слайд последним, если да, то присваиваем переменной item ноль,
+					// чтобы перейти к самому первому слайду
 					// не совсем полноценный слайдер, но сделать лучше как-то не хватило мозгов
 					if (i === links.length - 1) {
 						var item = 0;
@@ -217,11 +198,11 @@
 			removeActiveLinks();
 			changePosition(links[item]);
 		}
-
 	}
 
 	function Slides (obj) {
 		//console.log(guidMap);
+		var elem = document.querySelector('.slider__content');
 
 		var pos = 22;
 		var item = document.querySelector('.slider-nav__content');
@@ -230,6 +211,10 @@
 
 			var li = document.createElement('li');
 			li.className = 'articles__block';
+			// строчка кода ниже для перехода по клину на слайдер к приложению в каталоге,
+			// но поскольку я вспомнил об этом в самый последний момент,
+			// то не успел реализовать
+			li.setAttribute('data-app', obj[i].id);
 
 			var image = document.createElement('img');
 			image.className = 'articles__block-img';
@@ -251,7 +236,9 @@
 			li.appendChild(title);
 			li.appendChild(date);
 
-			// добавление элементов для того чтобы слайдер прокручивался при нажатии на точку, я решил что стоит их тоже сделать динамическими
+			// добавление элементов для того чтобы слайдер прокручивался при нажатии на точку,
+			// я решил что стоит их тоже сделать динамическими, а то вдруг слайдов будет 5,
+			// а точек так и останется 7, что неправильно
 			var items = document.createElement('li');
 			items.className = "item-links";
 			items.setAttribute("data-pos", pos + 'rem');
@@ -266,12 +253,9 @@
 		Switch(links);
 	}
 
-	JsonShow(apssMap);
-
-	var elemApps = document.querySelector('.aside-catalog__list');
-
 	// вывод каталога приложений
 	function Apps (appsObj) {
+		var elemApps = document.querySelector('.aside-catalog__list');
 
 		for (var i = 0; i < appsObj.length; i++) {
 			var li = document.createElement('li');
@@ -287,9 +271,8 @@
 		}
 	}
 
-	// огромная куча копипасты для динамической замены контента при клике на ссылку каталога приложений
-	JsonShow(appInfo);
-
+	// огромная куча копипасты для динамической замены контента при клике на ссылку каталога приложений слева
+	// сделал аналогично переключению слайдов в слайдере, но наверное лучше было бы смотреть по айди и потом грузить
 	var content = document.querySelector('.content');
 
 	function appInfoFunc(appInfoObj) {
@@ -338,11 +321,6 @@
 
 			}
 
-			// Наверное слишком жестко очищать весь блок с контентом,
-			// но у нас же и так в конце будет все динамически формироваться, так почему бы и нет
-			// поскольку в этот раз у меня не получилось выделить много времени на дз, пока решил откозаться от идеи отрисовывать весь блок
-			//content.innerHTML = "";
-
 			// удаляем все что есть в данных элементах
 			title.innerHTML = "";
 			date.innerHTML = "";
@@ -357,23 +335,17 @@
 
 			var id = app.getAttribute('data-id');
 
-			//console.log(appInfoObj);
-
 			for (var i = 0; i < appInfoObj.length; i++) {
 				if (id == appInfoObj[i].id) {
 
-					//contentFill();
 					title.innerHTML = appInfoObj[i].title;
 
 					// функция отдельная нужна
 					var Data = new Date (appInfoObj[i].lastUpdate * 1000);
-
 					date.innerHTML = formatter.format(Data);
-
-					desc.innerHTML = appInfoObj[i].description;
-
+					var strDesc = appInfoObj[i].description.replace(/\n/g, '<br>');
+					desc.innerHTML = strDesc;
 					require.innerHTML = appInfoObj[i].requirements;
-
 					price.innerHTML = appInfoObj[i].price;
 
 					var li = document.createElement('li');
@@ -390,44 +362,101 @@
 			}
 		}
 
-		var Cart = function(number) {
-			this.number = number;
-			this.idS = [];
+		var Cart = function() {
+			// решил выводить счетчик количества приложений через длинну local storage
+			// теперь даже не знаю как реорганизовать свой код чтобы сюда что-то вставить
+			// пустота не нравится
+			//this.number = number;
+			//this.idS = [];
 		};
 
-		Cart.prototype.increase = function(appId) {
-			if (!this.idS.hasOwnProperty(appId)) {
-				return this.number += 1;
-			} else {
-			 	return this.number += 0;
-			}
+		Cart.prototype.increase = function() {
+			var cartNumber = document.querySelector('.content__cart-number');
+			cartNumber.innerHTML = localStorage.length;
 		};
 
 		Cart.prototype.add = function(appId){
-			this.idS[appId] = 1;
-			console.log(this.idS);
+			//console.log(this.idS);
+			localStorage.setItem(appId, '1');
+			this.increase();
+			//localStorage.clear();
 		};
 
-		Cart.prototype.del = function(appId) {
-			if (this.idS.hasOwnProperty(appId)) {
-				this.idS[appId] = 0;
+		Cart.prototype.del = function(ex) {
+
+			var row = document.querySelectorAll('.table-basket__row');
+			var tableBody = document.querySelector('tbody');
+			var sum = 0;
+			//console.log(row);
+			for (var r = 0; r < row.length; r++) {
+				var tableRow = row[r].getAttribute('data-num');
+				//console.log(tableRow);
+				// сравниваем полученный дата атрибут у кнопки удаления с дата атрибутом строки в таблице,
+				// если они равны, то пытаемся удаляем строку
+				if (ex == tableRow) {
+					// удаляем сначала элемент в local storage
+					localStorage.removeItem(ex);
+					var kol = localStorage.length;
+					if (kol >= 0) {
+
+						tableBody.removeChild(row[r]);
+
+						// смотрим оставишеся строки таблицы после удаления для пересчета суммы
+						var tr = document.querySelectorAll('.table-basket__row');
+						for (var i = 0; i < tr.length; i++) {
+							var tableR = tr[i].getAttribute('data-num');
+							for (var jsFile = 0; jsFile < appInfoObj.length; jsFile++) {
+								if (tableR == appInfoObj[jsFile].id) {
+									var s = appInfoObj[jsFile].price;
+									sum += s;
+									//console.log(sum);
+								}
+							}
+						}
+					}
+				}
 			}
+			// пересчитываем сумму
+			this.summa(sum);
+			// обновляем счетчик
+			this.increase();
+			// отслеживаем нажатие кнопок в корзине
+			this.ListenerButton();
+		};
+
+		Cart.prototype.summa = function(sum) {
+			// отделяем целую часть
+			var intNumber = parseInt(sum, 10);
+			var fract = sum - intNumber;
+			// на всякий случай отсекаем ненужные значения, чтобы было только два знака после запятой
+			fract = fract.toFixed(2);
+			var srtFract = String(fract);
+			// отсекаме 0. чтобы получить строку, нужно в том случае если дробная часть будет 0.01
+			// чтобы копейки правильно вывелись - 01, а не 1
+			var strTotal = srtFract.substr(2, 2);
+			var cashInt = document.querySelector('.total__cash-sum');
+			cashInt.innerHTML = intNumber;
+			var cashFract = document.querySelector('.total__cash-cent');
+			cashFract.innerHTML = strTotal;
 		};
 
 		Cart.prototype.show = function() {
+			// если товар не добавлен в корзину, то не показываем ее
+			if (localStorage.length == 0) {
+				this.turn(0);
+			}
+			// выводим наши товары в корзине
 			var table = document.querySelector('tbody');
 			var tr = document.createElement('tr');
 			tr.className = "table-basket__row";
 			var trInner = document.querySelector('.table-template').content;
 
 			// вывод количества строк в таблице в зависимости от добавленных товаров
-			for (var key in this.idS) {
+			for (var key in localStorage) {
 				for (var j = 0; j < appInfoObj.length; j++) {
 					if (key == appInfoObj[j].id) {
-
 						tr.setAttribute('data-num', appInfoObj[j].id);
 						table.appendChild(tr.cloneNode(true));
-
 						//console.log(appInfoObj[j].id);
 					}
 				}
@@ -435,69 +464,185 @@
 			var trFill = document.querySelectorAll('.table-basket__row');
 			var sum = 0;
 			// а теперь само заполнение таблицы
+			// на мой взгляд ужасно, но лучше придумать не смог
 			for (var k = 0; k < trFill.length; k++) {
 				trFill[k].appendChild(trInner.cloneNode(true));
 				//console.log(trFill[k].childNodes[3]);
 				var tdPriceFill = trFill[k].childNodes[3];
 				var tdTotalFill = trFill[k].childNodes[5];
-				//console.log(tdTotalFill.childNodes[3]);
+				//console.log(trFill[k].childNodes[7]);
+				var tdDel = trFill[k].childNodes[7];
+				//console.log(tdDelBtn.childNodes[1]);
+				var tdDelBtn = tdDel.childNodes[1];
+				//console.log(tdDelBtn);
+
 				var dataNumber = trFill[k].getAttribute('data-num');
+				// сверяем наши дата атрибуты с нужным идентификатором и прописываем в кнопку удаления
 				for (var jsFile = 0; jsFile < appInfoObj.length; jsFile++) {
 					if (dataNumber == appInfoObj[jsFile].id) {
 						trFill[k].childNodes[1].innerHTML = appInfoObj[jsFile].title;
 						tdPriceFill.childNodes[3].innerHTML = appInfoObj[jsFile].price;
 						tdTotalFill.childNodes[3].innerHTML = appInfoObj[jsFile].price;
+						tdDelBtn.setAttribute('data-num', appInfoObj[jsFile].id);
 						var s = appInfoObj[jsFile].price;
 
 						sum += s;
 					}
 				}
 			}
-
-			var int = parseInt(sum);
-			var fract = (sum - int) * 100;
-			console.log(fract);
-			var cashInt = document.querySelector('.total__cash-sum');
-			cashInt.innerHTML = int;
-			var cashFract = document.querySelector('.total__cash-cent');
-			cashFract.innerHTML = fract;
+			// сумма
+			this.summa(sum);
+			// отслеживание кнопочек
+			this.ListenerButton();
 		};
 
+		Cart.prototype.turn = function(page) {
+			// наш переключатель между страничками корзины
+			var cartWindow = document.querySelector('.cart');
+			if (page == 0) {
+				cartWindow.innerHTML = "";
+				cartWindow.style.display = 'none';
+			} else if (page == 1) {
+				cartWindow.innerHTML = "";
+				var firstPage = document.querySelector('.cart-page-first').content;
+				cartWindow.appendChild(firstPage.cloneNode(true));
+				this.show();
+			} else if (page == 2) {
+				cartWindow.innerHTML = "";
+				var secondPage = document.querySelector('.cart-page-second').content;
+				cartWindow.appendChild(secondPage.cloneNode(true));
+				this.ListenerButton();
+			} else if (page == 3) {
+				var load = document.querySelector('.loading');
+				load.style.display = 'block';
+				setTimeout(function(){
+					cartWindow.innerHTML = "";
+					var thirdPage = document.querySelector('.cart-page-third').content;
+					load.style.display = 'none';
+					cartWindow.appendChild(thirdPage.cloneNode(true));
+
+					var listen = new Cart();
+					listen.ListenerButton();
+				}, 2000);
+			}	else if (page == 4) {
+				var load = document.querySelector('.loading');
+				load.style.display = 'block';
+				setTimeout(function(){
+					cartWindow.innerHTML = "";
+					var fourthPage = document.querySelector('.cart-page-fourth').content;
+					load.style.display = 'none';
+					cartWindow.appendChild(fourthPage.cloneNode(true));
+
+					var listen = new Cart();
+					listen.ListenerButton();
+				}, 2000);
+			} else if (page == 5) {
+				cartWindow.innerHTML = "";
+				cartWindow.style.display = 'none';
+				// на последнем этапе очищаем наш local storage
+				localStorage.clear();
+				this.increase();
+			// костыль для переключения с последней страницы корзины на третью,
+			// чтобы не появлялся блок с анимацией загрузки
+			} else if (page == 6) {
+				var load = document.querySelector('.loading');
+				load.style.display = 'block';
+				cartWindow.innerHTML = "";
+				var thirdPage = document.querySelector('.cart-page-third').content;
+				load.style.display = 'none';
+				cartWindow.appendChild(thirdPage.cloneNode(true));
+				this.ListenerButton();
+			}
+		};
+
+		Cart.prototype.ListenerButton = function() {
+			// метод отслеживания кнопочек
+			// ищем наши кнопки с навигацией внизу корзины и начинаем следить за ними
+			var backCatalog = document.querySelectorAll('.button');
+			//console.log(backCatalog);
+			var button;
+			for (var b = 0; b < backCatalog.length; b++) {
+				button = backCatalog[b];
+				button.addEventListener('click', turnPage, false)
+			}
+
+			// аналогично, только для панели навигации вверху корзины
+			var navbar = document.querySelectorAll('.navbar-basket-switch__item-back');
+			var navigation;
+			for (var n = 0; n < navbar.length; n++) {
+				navigation = navbar[n];
+				navigation.addEventListener('click', turnNav, false);
+			}
+
+			function turnPage(e) {
+				var btn = e.target;
+				var numberPage = btn.getAttribute('data-page');
+				var turnspages = new Cart();
+				turnspages.turn(numberPage);
+			}
+
+			function turnNav(e) {
+				var nav = e.target;
+				var navPage = nav.getAttribute('data-page');
+				var navpages = new Cart();
+				navpages.turn(navPage);
+			}
+		};
+
+		var num = new Cart();
+		// сразу вызываем наш счетчик
+		num.increase();
+
+		// отслеживаем кнопку нажатия при добавлении в корзину
+		// по идее раз я сделал ограничение приложений, чтобы конкретного приложения было не больше 1 штуки,
+		// то надо было сделать ее неактивной у того приложения, которое мы уже добавили в корзину
 		var appButon = document.querySelector('.app-button');
-		var cartNumber = document.querySelector('.content__cart-number');
-
 		appButon.addEventListener('click', AppClickCart, false);
-
-		var num = new Cart(0);
 
 		function AppClickCart (e) {
 
 			var sel = document.querySelector('.aside-catalog__list_link-active');
 			var dataId = sel.getAttribute('data-id');
 
-			cartNumber.innerHTML = num.increase(dataId);
 			num.add(dataId);
 			//console.log(this.idS);
 		}
 
+		// сразу грузим блок с незаполненной корзиной и делаем его скрытым
 		var cartPages = document.querySelector('.content__cart');
 		var catalog = document.querySelector('.cart-page-first').content;
 
 		cartPages.addEventListener('click', CartShow, false);
-
-		// var table = document.querySelector('tbody');
-		// var tr = document.querySelector('.table-template');
 
 		function CartShow (e) {
 
 			var cartWindow = document.querySelector('.cart');
 			cartWindow.appendChild(catalog.cloneNode(true));
 			cartWindow.style.display = 'block';
-			var table = document.querySelector('.table-basket');
-			var tr = document.querySelector('.table-template');
-
+			// обращаемся к методу класса show при нажатии на значок корзины в каталоге
 			num.show();
 
+			var delApp = document.querySelectorAll('.table-basket__row_del');
+			//console.log(delApp);
+
+			for (var d = 0; d < delApp.length; d++) {
+
+				var app = delApp[d];
+
+				app.addEventListener('click', deleteApp, false);
+
+				app.appID = d;
+
+			}
+		}
+
+		var appID = 0;
+		// ну тут удаление
+		function deleteApp (e) {
+			var clickedDelApp = e.target;
+			var ex = clickedDelApp.getAttribute('data-num');
+			//console.log(ex);
+			num.del(ex);
 		}
 	}
 }());
